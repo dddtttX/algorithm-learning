@@ -36,5 +36,5 @@ var searchTest2 = function (nums, target) {
     }
     return -1
 }
-console.log(searchTest1(nums,target));
+console.log(searchTest1(nums, target));
 
