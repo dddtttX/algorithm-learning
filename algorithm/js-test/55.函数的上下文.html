@@ -1,0 +1,15 @@
+<!-- 将函数 fn 的执行上下文改为 obj 对象 -->
+<!-- 
+    输入：  function () {return this.greeting + ', ' + this.name + '!!!';}, {greeting: 'Hello', name: 'Rebecca'}
+    输出：  Hello, Rebecca!!!
+ -->
+
+
+<script>
+    function speak(fn, obj) {
+        // 改变this指向？
+        // 把fn的this改到greeting对象中
+       return fn.call(obj)
+}
+console.log(speak(function () {return this.greeting + ', ' + this.name + '!!!';}, {greeting: 'Hello', name: 'Rebecca'}));
+</script>

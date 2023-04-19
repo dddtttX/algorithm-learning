@@ -1,0 +1,43 @@
+<!-- 
+
+    请补全JavaScript代码，实现以下功能：
+1. 根据已有的person对象的注册时间求出距离当前时间的天数（天数向下取整）。
+2. 将获得的天数和person数据拼接成字符串，作为h2标签的内容。
+注意：使用模板字符串进行字符串拼接，字符串最终内容如：尊贵的牛客网2级用户小丽您好，您已经注册牛客网3天啦~
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h2></h2>
+
+    <script>
+        var person = [{
+            level: '2',
+            name: '小丽',
+            registTime: '2021-11-01',
+        }, {
+            level: '2',
+            name: '小丽',
+            registTime: '2023-4-1',
+        }]
+        var h2 = document.querySelector('h2');
+        // 补全代码
+
+        const nowDate = new Date().getTime(); 
+        person.forEach(p => {
+            const registTime = new Date(p.registTime).getTime();
+            let day = Math.floor((nowDate - registTime)/(1000*60*60*24))
+            h2.innerHTML += `尊贵的牛客网${p.level}级用户${p.name}您好，您已经注册牛客网${day}天啦~<br><br>`
+        });
+
+    </script>
+</body>
+
+</html>

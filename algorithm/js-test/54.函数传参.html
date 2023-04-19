@@ -1,0 +1,49 @@
+<!-- 将数组 arr 中的元素作为调用函数 fn 的参数 -->
+<!-- 
+
+    function (greeting, name, punctuation) {return greeting + ', ' + name + (punctuation || '!');}, ['Hello', 'Ellie', '!']
+
+    Hello, Ellie!
+ -->
+
+<script>
+
+    function argsAsArray(fn, arr) {
+       return fn.call(this,...arr)
+    }
+    function fn(greeting, name, punctuation) {
+        return greeting + ', ' + name + (punctuation || '!');
+    }
+    arr = ['Hello', 'Ellie', '!']
+
+    console.log(argsAsArray(fn,arr));
+    
+</script>
+
+<!-- 
+apply
+    function argsAsArray(fn, arr) {
+        return fn.apply(fn, arr);
+    }
+    //或者
+    function argsAsArray(fn, arr) {
+        return fn.apply(this, arr);
+    }
+
+
+call
+    function argsAsArray(fn, arr) {
+        return fn.call(fn, arr[0],arr[1],arr[2]);
+    }
+    //或者
+    function argsAsArray(fn, arr) {
+        return fn.call(this, arr[0],arr[1],arr[2]);
+    }
+
+
+
+
+
+
+
+ -->

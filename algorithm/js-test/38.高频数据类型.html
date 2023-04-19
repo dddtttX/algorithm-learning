@@ -1,0 +1,50 @@
+<!-- 
+
+    请补全JavaScript代码，要求找到参数数组中出现频次最高的数据类型，并且计算出出现的次数，要求以数组的形式返回。
+注意：
+1. 基本数据类型之外的任何引用数据类型皆为"object"
+2. 当多种数据类型出现频次相同时将结果拼接在返回数组中，出现次数必须在数组的最后
+
+__findMostType([0,0,'',''])
+['number','string',2]或['string','number',2]
+ -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        const _findMostType = array => {
+            // 补全代码
+            let count = 0
+            let obj = {}
+            array.forEach(item => {
+                let type = typeof (item)
+                if (obj[type]) {
+                    obj[type]++
+                } else {
+                    obj[type] = 1
+                }
+                count = count>obj[type]?count:obj[type]
+            })
+            let arr = []
+            for (const key in obj) {
+                if (obj[key] == count) {
+                    arr.push(key)
+                }
+            }
+            arr.push(count)
+            return arr
+        }
+        console.log(
+            _findMostType([0, 0, '', ''])
+        );
+    </script>
+</body>
+
+</html>

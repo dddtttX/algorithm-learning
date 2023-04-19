@@ -1,0 +1,36 @@
+<!-- 
+
+    请补全JavaScript代码，
+    要求在Number对象的原型对象上添加"_isPrime"函数，
+    该函数判断调用的对象是否为一个质数，是则返回true，否则返回false。
+
+ -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // 补全代码
+        Number.prototype._isPrime = function(number) {
+                if(number < 2) {
+                    return true;
+                }
+                for(var i = 2;i<Math.sqrt(number);i++) {
+                    if(number % i === 0) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        const number = new Number();
+
+        console.log(number._isPrime(-1));
+    </script>
+</body>
+
+</html>
