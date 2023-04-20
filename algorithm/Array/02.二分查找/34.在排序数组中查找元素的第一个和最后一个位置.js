@@ -4,6 +4,6 @@
         如果数组中不存在目标值 target，返回 [-1, -1]。
  */
 
-    let nums = [5, 7, 7, 8, 8, 10]
-    let target = 8
-    let a = 1
+let nums = [5, 7, 7, 8, 8, 10]
+let target = 8
+let a = 1
