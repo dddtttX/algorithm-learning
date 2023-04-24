@@ -35,3 +35,4 @@ var removeEle = function(nums, val){
 }
 
 console.log(removeEle(nums,val));
+// 测试一下能否提交成功第三次
