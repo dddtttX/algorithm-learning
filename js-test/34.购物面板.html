@@ -1,0 +1,94 @@
+<!-- 请补全JavaScript代码，要求如下：
+1. 当点击"-"按钮时，商品数量减1
+2. 当点击"+"按钮时，商品数量加1
+3. 每当点击任意按钮时，购物面板中相关信息必须同步更新
+注意：
+1. 必须使用DOM0级标准事件（onclick） -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <caption>
+                商品
+            </caption>
+        </thead>
+        <tbody>
+            <tr>
+                <td>炸鸡</td>
+                <td>28元</td>
+                <td><button id="zjtaiduola">-</button></td>
+                <td><span id="zjsl">0</span></td>
+                <td><button id="zjtaishaola">+</button></td>
+            </tr>
+            <tr>
+                <td>可乐</td>
+                <td>5元</td>
+                <td><button id="kltaiduola">-</button></td>
+                <td><span id="klsl">0</span></td>
+                <td><button id="kltaishaola">+</button></td>
+            </tr>
+            <tr>
+                <td>总价：</td>
+                <td><span id="total">0</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+        // 补全代码
+
+        var tr = document.querySelectorAll("tr")
+        var total = document.querySelector("#total")
+        var buttons = document.querySelectorAll("button")
+
+        // 改变数量
+        buttons.forEach(button => {
+            button.onclick = function changeCount(e) {
+                var count = e.target.parentNode.parentNode.children[3].children[0].innerHTML
+                // 减法
+                if (e.target.innerHTML === "-") {
+                    if (count>0) {
+                    count--
+                    }
+                }
+                if (e.target.innerHTML === "+") {
+                    count++
+                }
+                e.target.parentNode.parentNode.children[3].children[0].innerHTML = "" +count
+                getSum()
+            }
+        })
+
+        // 渲染总价
+        function showTotal(totalPrice) {
+            total.innerHTML = "" + totalPrice
+        }
+
+        // 求和
+        function getSum() {
+            var totalPrice = 0
+            tr.forEach(item => {
+                if (item.children.length > 2) {
+                    // 获取单价
+                    var priceStr = item.children[1].innerHTML
+                    var priceNum = Number(priceStr.slice(0, -1))
+                    // 获取数量
+                    var countStr = item.children[3].children[0].innerHTML
+                    var countNum = Number(countStr)
+                    totalPrice += countNum * priceNum
+                }
+            })
+            showTotal(totalPrice)
+        }
+        getSum()
+    </script>
+</body>
+
+</html>

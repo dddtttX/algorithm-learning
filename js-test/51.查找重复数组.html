@@ -1,0 +1,27 @@
+<!-- 查找重复元素 -->
+<!-- 找出数组 arr 中重复出现过的元素（不用考虑返回顺序） -->
+
+
+<script>
+
+    function duplicates(arr) {
+        let obj = {}
+        let newArr = []
+        arr.forEach(element => {
+            if (!obj[element]) {
+                obj[element] = 1
+            } else {
+                obj[element]++
+            }
+        });
+        console.log(obj);
+        for (const key in obj) {
+            if (obj[key] > 1) {
+                newArr.push(key)
+            }
+        }
+        return newArr
+        // console.log(newArr);
+    }
+    duplicates([1, 2, 4, 4, 3, 3, 1, 5, 3])
+</script>
