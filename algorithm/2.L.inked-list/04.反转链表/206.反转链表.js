@@ -65,6 +65,17 @@ var reverseByStack = function (head) {
         stack.push(cur)
         cur = cur.next
     }
+    // 创建一个虚拟头节点
+    const pHead = new ListNode(0)
+    cur = pHead
+    while(!stack.isEmpty()){
+        const node = stack.pop()
+        cur.next = node
+        cur = cur.next
+    }
+    // 最后一个元素赋空
+    cur.next = null
+    return pHead.next
 
 }
 
