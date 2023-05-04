@@ -22,9 +22,34 @@ console.log(node);
  * @return {ListNode}
  */
 function removeEle(head, val) {
-    // 删除头部节点
-    while(head !== null && head.val === val){
-        head = head.next
+    // 设置虚拟头部
+    let ret = new ListNode(0, head)
+    let cur = ret 
+    while(cur.next){
+        if (cur.next.val == val) {
+            cur.next = cur.next.next
+            continue
+        }
+        cur = cur.next
     }
-    
+    return ret.next
+  
+}
+
+function removeEle2(head, val){
+    // 直接移除
+    // 要对是不是头部节点进行分类讨论
+    while (head !== null && head.val == val) {
+        return head.next
+    }else if(head == null){ return head }
+    let pre = head; let cur = head.next
+    // 删除对非头部节点
+    while (cur) {
+        if (cur.val == val) {
+            pre.next = cur.next
+            continue
+        }
+        cur = cur.next
+    }
+    return head
 }
